@@ -1,0 +1,10 @@
+- name: create a VPC
+  ec2_vpc_net:
+    name: "{{ vpc.name }}"
+    cidr_block: "{{ vpc.cidr }}"
+    region: "{{ vpc.region }}"
+  register: create_vpc
+
+- name: "set fact: VPC ID"
+  set_fact:
+    vpc_id: "{{ create_vpc.vpc.id }}"

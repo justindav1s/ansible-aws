@@ -1,0 +1,27 @@
+- ec2_vpc_net_facts:
+    filters:
+      "tag:Role": eks
+  register: vpc_facts
+
+- name: "set fact: VPC ID"
+  set_fact:
+    vpc_id: "{{ vpc_facts.vpcs[0].vpc_id }}"
+
+- name: Gather facts about a filtered list of Internet Gateways
+  ec2_vpc_route_table_facts:
+    filters:
+      vpc-id: "{{ vpc_id }}"
+      "tag:Role": eks
+  register: rt_facts
+
+- name: "set fact: RT ID"
+  set_fact:
+    rt_id: "{{ rt_facts.route_tables[0].id }}"
+
+- name: delete route table
+  ec2_vpc_route_table:
+    vpc_id: "{{ vpc_id }}"
+    region: "{{ vpc.region }}"
+    route_table_id: "{{ rt_id }}"
+    lookup: id
+    state: absent

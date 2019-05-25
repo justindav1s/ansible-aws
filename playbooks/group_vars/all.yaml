@@ -1,0 +1,40 @@
+ansible_connection: local
+
+vpc:
+  name: eks-vpc
+  region: eu-west-1
+  cidr: 10.10.0.0/16
+
+subnets:
+  eks-{{ vpc.region }}a:
+    cidr: 10.10.1.0/24
+    az: "{{ vpc.region }}a"
+  eks-{{ vpc.region }}b:
+    cidr: 10.10.2.0/24
+    az: "{{ vpc.region }}b"
+  eks-{{ vpc.region }}c:
+    cidr: 10.10.3.0/24
+    az: "{{ vpc.region }}c"
+
+security_group:
+  - name: vpc
+    description: "Allow internal traffic in the VPC"
+    rules:
+      - proto: all
+        group_name: vpc
+        ports: all
+  - name: allow-public-ssh
+    description: "Allow public SSH"
+    rules:
+      - proto: tcp
+        cidr_ip: 0.0.0.0/0
+        ports:
+          - 22
+  - name: allow-public-http
+    description: "Allow public web traffic"
+    rules:
+      - proto: tcp
+        cidr_ip: 0.0.0.0/0
+        ports:
+          - 80
+          - 443
