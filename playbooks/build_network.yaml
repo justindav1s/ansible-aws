@@ -7,3 +7,4 @@
     - include_tasks: tasks/igw/create_igw.yaml
     - include_tasks: tasks/rt/create_rt.yaml
     - include_tasks: tasks/sg/create_sg.yaml
+    - include_tasks: tasks/iam/create_iam.yaml

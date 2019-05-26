@@ -1,0 +1,5 @@
+- hosts: all
+  connection: local
+  gather_facts: False
+  tasks:
+    - include_tasks: tasks/iam/delete_iam.yaml
