@@ -5,7 +5,8 @@
     cidr_block: "{{ vpc.cidr }}"
     region: "{{ vpc.region }}"
     tags:
-      Role: eks
+      Name: "{{ role.tag }}-vpc"
+      Role: "{{ role.tag }}"
   register: create_vpc
 
 - name: "set fact: VPC ID"

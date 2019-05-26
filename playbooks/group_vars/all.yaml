@@ -19,13 +19,14 @@ subnets:
     cidr: 10.10.3.0/24
     az: "{{ vpc.region }}c"
 
-security_group:
-  - name: vpc
+security_groups:
+  - name: vpc-all
     description: "Allow internal traffic in the VPC"
     rules:
       - proto: all
         group_name: vpc
         ports: all
+
   - name: allow-public-ssh
     description: "Allow public SSH"
     rules:
@@ -33,6 +34,7 @@ security_group:
         cidr_ip: 0.0.0.0/0
         ports:
           - 22
+
   - name: allow-public-http
     description: "Allow public web traffic"
     rules:

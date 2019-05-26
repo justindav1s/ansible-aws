@@ -1,6 +1,6 @@
 - ec2_vpc_net_facts:
     filters:
-      "tag:Role": eks
+      "tag:Role": "{{ role.tag }}"
   register: vpc_facts
 
 - name: "set fact: VPC ID"
@@ -9,7 +9,7 @@
 
 - ec2_vpc_subnet_facts:
     filters:
-      "tag:Role": eks
+      "tag:Role": "{{ role.tag }}"
   register: subnets_facts
 
 - name: "set fact: VPC subnet 0 ID"
@@ -28,10 +28,10 @@
 - name: Set up public subnet route table
   ec2_vpc_route_table:
     vpc_id: "{{ vpc_id }}"
-    region: eu-west-1
+    region: "{{ vpc.region }}"
     tags:
-      Name: eks-rt
-      Role: eks
+      Name: "{{ role.tag }}-rt"
+      Role: "{{ role.tag }}"
     subnets:
       - "{{ subnet0_id }}"
       - "{{ subnet1_id }}"
