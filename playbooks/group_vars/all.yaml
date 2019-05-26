@@ -8,6 +8,8 @@ eks_cluster_name: my-eks-cluster
 eks_cluster_role_name: "{{ role.tag }}-cluster-role"
 eks_worker_role_name:  "{{ role.tag }}-worker-role"
 
+eks_kubeconfig: ~/.kube/{{ eks_cluster_name }}.config
+
 vpc:
   name: "{{ role.tag }}-vpc"
   region: eu-west-1
