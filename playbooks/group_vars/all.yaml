@@ -3,6 +3,8 @@ ansible_connection: local
 role:
   tag: eks
 
+eks_cluster_name: my-eks-cluster
+
 eks_cluster_role_name: "{{ role.tag }}-cluster-role"
 eks_worker_role_name:  "{{ role.tag }}-worker-role"
 

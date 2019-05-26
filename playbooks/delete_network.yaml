@@ -8,3 +8,4 @@
     - include_tasks: tasks/rt/delete_rt.yaml
     - include_tasks: tasks/vpc/delete_vpc.yaml
     - include_tasks: tasks/iam/delete_iam.yaml
+    - include_tasks: tasks/eks/delete_eks.yaml
