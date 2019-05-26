@@ -9,4 +9,4 @@ echo AWS_SECRET_ACCESS_KEY = $AWS_SECRET_ACCESS_KEY
 echo AWS_DEFAULT_REGION = $AWS_DEFAULT_REGION
 
 
-ansible-playbook -vvvv -i ../inventory/hosts ../playbooks/build_network.yaml
+ansible-playbook -vvvv -i ../inventory/hosts ../playbooks/build_prereqs.yaml

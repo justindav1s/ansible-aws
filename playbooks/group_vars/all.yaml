@@ -3,12 +3,12 @@ ansible_connection: local
 role:
   tag: eks
 
-eks_cluster_name: my-eks-cluster
+eks_cluster_name: my-eks-cluster2
 
 eks_cluster_role_name: "{{ role.tag }}-cluster-role"
 eks_worker_role_name:  "{{ role.tag }}-worker-role"
 
-eks_kubeconfig: ~/.kube/{{ eks_cluster_name }}.config
+eks_kubeconfig: ~/.kube/eks.config
 eks_kubeconfig_env: []
 
 role_path: ~/github/ansible-aws/playbooks
