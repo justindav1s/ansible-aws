@@ -3,4 +3,4 @@
     state: absent
     name: "{{ eks_cluster_name }}"
     region: "{{ vpc.region }}"
-    wait: no
+    wait: yes
