@@ -2,4 +2,4 @@
   connection: local
   gather_facts: False
   tasks:
-    - include_tasks: tasks/eks/create_eks.yaml
+    - include_tasks: tasks/iam/facts_iam.yaml

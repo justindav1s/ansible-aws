@@ -33,6 +33,17 @@
     wait: yes
   register: eks_create
 
+- iam_role_facts:
+    name: "{{ eks_worker_role_name }}"
+  register: worker_role_facts
+
+- debug:
+    msg: "{{ worker_role_facts.iam_roles[0].arn }}"
+
+- name: "set fact: VPC ID"
+  set_fact:
+    eks_worker_iam_role_arn: "{{ worker_role_facts.iam_roles[0].arn }}"
+
 - name: output kube config
   template:
     src: kube.config.j2
