@@ -1,18 +1,21 @@
 ansible_connection: local
 
+role:
+  tag: eks
+
 vpc:
-  name: eks-vpc
+  name: "{{ role.tag }}-vpc"
   region: eu-west-1
   cidr: 10.10.0.0/16
 
 subnets:
-  eks-{{ vpc.region }}a:
+  "{{ role.tag }}-{{ vpc.region }}a":
     cidr: 10.10.1.0/24
     az: "{{ vpc.region }}a"
-  eks-{{ vpc.region }}b:
+  "{{ role.tag }}-{{ vpc.region }}b":
     cidr: 10.10.2.0/24
     az: "{{ vpc.region }}b"
-  eks-{{ vpc.region }}c:
+  "{{ role.tag }}-{{ vpc.region }}c":
     cidr: 10.10.3.0/24
     az: "{{ vpc.region }}c"
 

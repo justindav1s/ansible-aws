@@ -13,5 +13,5 @@
     tags:
       Name: "{{ role.tag }}-igw"
       Role: "{{ role.tag }}"
-    state: absent
+    state: present
   register: igw

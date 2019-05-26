@@ -1,6 +1,6 @@
 - ec2_vpc_net_facts:
     filters:
-      "tag:Role": eks
+      "tag:Role": "{{ role.tag }}"
   register: vpc_facts
 
 - name: "set fact: VPC ID"
@@ -11,7 +11,7 @@
   ec2_vpc_route_table_facts:
     filters:
       vpc-id: "{{ vpc_id }}"
-      "tag:Role": eks
+      "tag:Role": "{{ role.tag }}"
   register: rt_facts
 
 - name: "set fact: RT ID"

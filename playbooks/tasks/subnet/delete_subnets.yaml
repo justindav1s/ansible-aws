@@ -1,6 +1,6 @@
 - ec2_vpc_net_facts:
     filters:
-      "tag:Role": eks
+      "tag:Role": "{{ role.tag }}"
   register: vpc_facts
 
 - name: "set fact: VPC ID"
@@ -9,7 +9,7 @@
 
 - ec2_vpc_subnet_facts:
     filters:
-      "tag:Role": eks
+      "tag:Role": "{{ role.tag }}"
   register: subnets_facts
 
 - name: "set fact: VPC subnet IDs"
