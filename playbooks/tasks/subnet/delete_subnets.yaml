@@ -25,3 +25,4 @@
     tags:
       Name: "{{ item.key }}"
   with_dict: "{{ vpc_subnet_ids }}"
+  when: vpc_subnet_ids is defined

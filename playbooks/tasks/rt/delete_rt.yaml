@@ -14,14 +14,11 @@
       "tag:Role": "{{ role.tag }}"
   register: rt_facts
 
-- name: "set fact: RT ID"
-  set_fact:
-    rt_id: "{{ rt_facts.route_tables[0].id }}"
-
 - name: delete route table
   ec2_vpc_route_table:
     vpc_id: "{{ vpc_id }}"
     region: "{{ vpc.region }}"
-    route_table_id: "{{ rt_id }}"
+    route_table_id: "{{ item.id }}"
     lookup: id
     state: absent
+  loop: "{{ rt_facts.route_tables }}"

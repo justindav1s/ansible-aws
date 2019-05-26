@@ -12,3 +12,11 @@
       vpc-id: "{{ vpc_id }}"
       "tag:Role": "{{ role.tag }}"
   register: sec_groups
+
+- name: delete VPC security groups
+  ec2_group:
+    state: absent
+    name: "{{ item.group_name }}"
+    group_id: "{{ item.group_id }}"
+    vpc_id: "{{ vpc_id }}"
+  loop: "{{ sec_groups.security_groups }}"
