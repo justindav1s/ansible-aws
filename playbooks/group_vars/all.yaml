@@ -11,6 +11,8 @@ eks_worker_role_name:  "{{ role.tag }}-worker-role"
 eks_kubeconfig: ~/.kube/{{ eks_cluster_name }}.config
 eks_kubeconfig_env: []
 
+role_path: ~/github/ansible-aws/playbooks
+
 vpc:
   name: "{{ role.tag }}-vpc"
   region: eu-west-1
