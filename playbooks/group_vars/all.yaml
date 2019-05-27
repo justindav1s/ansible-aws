@@ -4,7 +4,7 @@ role:
   tag: eks
 
 eks_cluster_name: my-eks-cluster
-kube_version: v1.11.0
+kube_version: 1.11
 
 eks_cluster_role_name: "{{ role.tag }}-cluster-role"
 eks_worker_role_name:  "{{ role.tag }}-worker-role"
