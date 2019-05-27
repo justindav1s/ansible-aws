@@ -56,7 +56,7 @@
     dest: "{{ eks_kubeconfig | dirname }}/aws-iam-authenticator-with-cache"
     mode: 0755
 
-- name: add authentication configuration
-  k8s:
-    definition: "{{ lookup('template', role_path + '/templates/aws-auth-cm.yml') }}"
-    kubeconfig: "{{ eks_kubeconfig }}"
+#- name: add authentication configuration
+#  k8s:
+#    definition: "{{ lookup('template', role_path + '/templates/aws-auth-cm.yml') }}"
+#    kubeconfig: "{{ eks_kubeconfig }}"

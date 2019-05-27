@@ -52,7 +52,7 @@
 
 - name: "create a cloudformation stack"
   cloudformation:
-    stack_name: "{{ workers.stack_name }}"
+    stack_name: "{{ workers.stack_name }}-1"
     state: "present"
     region: "{{ vpc.region }}"
     disable_rollback: true

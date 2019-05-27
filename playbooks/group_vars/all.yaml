@@ -73,7 +73,7 @@ workers:
   key_name: jnd_mac_rh
   node_ami: ami-098fb7e9b507904e7
   instance_type: t3.medium
-  auto_scaling_count: 2
+  auto_scaling_count: 1
   auto_scaling_min: 1
   auto_scaling_max: 3
   ebs_vol_gb: 20

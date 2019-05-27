@@ -7,6 +7,7 @@ export AWS_DEFAULT_REGION="eu-west-1"
 echo AWS_ACCESS_KEY_ID = $AWS_ACCESS_KEY_ID
 echo AWS_SECRET_ACCESS_KEY = $AWS_SECRET_ACCESS_KEY
 echo AWS_DEFAULT_REGION = $AWS_DEFAULT_REGION
+echo KUBECONFIG = $KUBECONFIG
 
 
 ansible-playbook -vvvv -i ../inventory/hosts ../playbooks/build_eks.yaml
