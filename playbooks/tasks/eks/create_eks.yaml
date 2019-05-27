@@ -26,6 +26,7 @@
   aws_eks_cluster:
     state: present
     name: "{{ eks_cluster_name }}"
+    version: "{{ kube_version }}"
     security_groups: "{{ sec_groups_facts.security_groups | json_query('[].group_name') }}"
     subnets: "{{ subnets_facts.subnets | json_query('[].id') }}"
     role_arn: "{{ iam_role_facts.iam_roles[0].arn }}"

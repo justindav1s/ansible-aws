@@ -3,7 +3,8 @@ ansible_connection: local
 role:
   tag: eks
 
-eks_cluster_name: my-eks-cluster2
+eks_cluster_name: my-eks-cluster
+kube_version: v1.11.0
 
 eks_cluster_role_name: "{{ role.tag }}-cluster-role"
 eks_worker_role_name:  "{{ role.tag }}-worker-role"
@@ -37,7 +38,15 @@ security_groups:
         group_name: vpc-all
         from_port: 0
         to_port: 65000
-
+      - proto: tcp
+        cidr_ip: "0.0.0.0/0"
+        ports:
+          - 22
+      - proto: tcp
+        cidr_ip: "0.0.0.0/0"
+        ports:
+          - 80
+          - 443
 
   - name: allow-public-ssh
     description: "Allow public SSH"
@@ -55,3 +64,22 @@ security_groups:
         ports:
           - 80
           - 443
+
+workers:
+  stack_name: eks-worker-nodes1
+  cluster_name: "{{ eks_cluster_name }}"
+  node_group_name: "{{ eks_cluster_name }}-node-grp1"
+  bootstrap_args: ""
+  key_name: jnd_mac_rh
+  node_ami: ami-0e82e73403dd69fa3
+  instance_type: t3.large
+  auto_scaling_count: 2
+  auto_scaling_min: 1
+  auto_scaling_max: 3
+  ebs_vol_gb: 20
+  control_plane_sg: "{{ security_groups[0].name }}"
+
+# 1.11 20/02/19 ami-098fb7e9b507904e7
+# 1.11 11/02/19 ami-0b469c0fef0445d29
+
+
