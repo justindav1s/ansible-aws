@@ -10,4 +10,4 @@ echo AWS_DEFAULT_REGION = $AWS_DEFAULT_REGION
 echo KUBECONFIG = $KUBECONFIG
 
 
-ansible-playbook -vvvv -i ../inventory/hosts ../playbooks/build_eks.yaml
+ansible-playbook -vvvv -i ../playbooks/inventory/hosts ../playbooks/build_eks.yaml

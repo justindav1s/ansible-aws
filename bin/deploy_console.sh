@@ -14,4 +14,4 @@ kubectl apply -f ../kube/eks-admin-service-account.yaml
 
 kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep eks-admin | awk '{print $1}')
 
-kubectl get pods --all-namespaces -watch
+kubectl get pods --all-namespaces
